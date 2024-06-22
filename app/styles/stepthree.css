@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.review-inline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px, 20px, 0px, 20px;
+    font-family: 'Roboto' !important;
+    font-size: 16.96px !important;
+}
+
+.review-stepthree{
+    margin-bottom: 80px;   
+}
+
+.review-inline h3{
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 31.85px;
+}
+
+.review-inline .reviews{
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+    line-height: 36.75px;
+    font-size: 15px;
+    color: #000000;
+}
+
+.review-inline .reviews span{
+    font-weight: 400 !important;
+}
+
+.review-sm{
+    display: none !important;
+}
+
+@media screen and (max-width: 576px) {
+    .review-md{
+        display: none !important;
+    }
+
+    .review-sm{
+        display: flex !important;
+    }
+  }
+
+.stars{
+    display: flex;
+    gap: 2px
+}
+.stars img{
+    width: 28.27px;
+    height: 28.27px;
+}
+
+.trustpilot{
+    display: flex;
+    align-items: center;
+    gap: 5.65px;
+}
+
+.trustpilot span{
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+    font-size: 16.96px;
+    line-height: 36.75px;
+}
+
+.trustpilot img{
+    width: 19.79px;
+}
+
+
+.card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid #181818;
+    padding: 50px 30px 50px 30px;
+    gap:30px;
+}
+
+@media screen and (max-width: 576px) {
+    .card{
+        padding: 30px 20px 30px 20px;
+    }
+  }
+
+
+.card .card-top{
+    display: flex;
+    gap:20px;
+}
+
+
+@media screen and (max-width: 576px) {
+    .card .card-top{
+        flex-direction: column;
+    }
+  }
+
+
+
+.card-title-price{
+    display: flex;
+    flex-direction: column;
+}
+
+.title-price-stepthree{
+    gap: 10px !important;
+}
+
+.savings{
+    display: flex;
+    gap: 10px;
+}
+
+.savings p, .savings span{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22.5px;
+    color: #124296 !important;
+    display: flex;
+}
+
+.savings span{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: -0.88px;   
+}
+
+.savings span p{
+    font-weight: 400 !important;
+    font-size: 10px !important;
+    line-height: 10px !important;
+    letter-spacing: -3% !important;
+}
+
+.card-title-price h3{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0.12px;
+    color: #002C20;
+    text-transform: uppercase;
+}
+
+.price-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-info{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media screen and (max-width: 576px) {
+    .card-info{
+        gap: 10px
+    }
+  }
+
+.card-info span{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0px 7px 0px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #484E5A !important;
+}
+
+
+
+.forward-btns{
+    display: flex !important;
+    gap: 5px !important;
+    width: 100%;
+}
+.btn-group-stepthree{
+    display: flex;
+    gap: 5px !important;
+}
+
+
+@media screen and (max-width: 576px) {
+    .btn-group-stepthree{
+        flex-direction: column;
+    }
+    .long-btn-stepthree{
+        order: 1;
+    }
+    .arrow-btn-stepthree{
+        order: 2;
+    }
+    .back-btn-stepthree{
+        order: 3
+    }
+  }
+
+.back-btn-stepthree{
+    margin-bottom: 0 !important;
+}
+
+.long-btn-stepthree{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px !important;
+    font-size: 20px !important;
+    min-height: 60px;
+}
+
+.arrow-btn-stepthree{
+    display: flex;
+    justify-content: center;
+    width: 60px !important;
+    font-size: 20px !important;
+}
+
+.card-suppliment:hover{
+    cursor: pointer;
+}

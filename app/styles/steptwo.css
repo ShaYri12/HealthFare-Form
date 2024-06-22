@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.review-inline{
+    display: flex;
+    align-items: center;
+    justify-content: start !important;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-family: 'Roboto' !important;
+    font-size: 16.96px !important;
+}
+
+.review-inline h3{
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 31.85px;
+}
+
+.review-inline .reviews{
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+    line-height: 36.75px;
+    font-size: 15px;
+    color: #000000;
+}
+
+.review-inline .reviews span{
+    font-weight: 400 !important;
+}
+
+.stars{
+    display: flex;
+    gap: 2px
+}
+.stars img{
+    width: 28.27px;
+    height: 28.27px;
+}
+
+.trustpilot{
+    display: flex;
+    align-items: center;
+    gap: 5.65px;
+}
+
+.trustpilot span{
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+    font-size: 16.96px;
+    line-height: 36.75px;
+}
+
+.trustpilot img{
+    width: 19.79px;
+}
+
+.medication{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid #181818;
+}
+
+.card-header,  .card-header-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 15px 30px;
+    border-bottom: 2px solid #181818;
+}
+
+.card-header{
+    background-color: #38B64B;
+    color: #fff
+}
+
+.card-header h3, .card-header-2 h3{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 37.12px;
+}
+
+.card-header span{
+    display: flex;
+    gap: 11px;
+}
+
+@media screen and (max-width: 410px){
+    .card-header{
+        flex-direction: column;
+        gap: 5px;
+    }   
+}
+
+.medication .card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: none;
+    padding: 50px 30px 50px 30px;
+    gap:30px;
+}
+
+@media screen and (max-width: 576px) {
+    .card{
+        padding: 30px 20px 30px 20px;
+    }
+  }
+
+.card .card-top{
+    display: flex;
+    gap:10px;
+}
+
+@media screen and (max-width: 576px) {
+    .card .card-top{
+        flex-direction: column;
+    }
+  }
+
+.card-title-price{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+
+.title-desc{
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    line-height: 23.4px !important;
+    color: #484E5A !important;
+}
+
+.price-savings{
+    display: flex;
+    align-items: start !important;
+    justify-content: space-between;
+}
+
+.price{
+    display: flex;
+    align-items: baseline;
+}
+
+.card-title-price span{
+    color: #002C20;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22.5px;
+}
+
+.saving{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.saving p, .saving span{
+    font-weight: 400;
+    font-size: 15px !important;
+    line-height: 22.5px;
+    color: #124296 !important;
+    display: flex;
+}
+
+
+.saving span{
+    font-weight: 700;
+    font-size: 20px !important;
+    line-height: 20px;
+    letter-spacing: -0.88px;   
+    display: flex;
+    align-items: baseline;
+}
+
+.saving span p{
+    font-weight: 400 !important;
+    font-size: 10px !important;
+    line-height: 10px !important;
+    letter-spacing: -3% !important;
+}
+
+.card-title-price h3{
+    font-weight: 700 !important;
+    font-size: 23px;
+    line-height: 27.6px;
+    letter-spacing: 0.12px;
+    color: #002C20 !important;
+    text-transform: uppercase;
+}
+
+.price-savings h2{
+    font-weight: 600 !important;
+    padding: 0 !important;
+    font-size: 45px !important;
+    line-height: 45px !important;
+    letter-spacing: -2px !important;
+    color: #38B64B;
+}
+
+.card-title-price span{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.card-title-price span p{
+    display: flex;
+}
+
+.card-title-price span p{
+    display: flex;
+    align-items: baseline;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: -0.88px;
+    color: #002C20;
+}
+
+.card-title-price span p span{
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 45px;
+    letter-spacing: -2%;
+}
+
+.card-info{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media screen and (max-width: 576px) {
+    .card-info{
+        gap: 10px
+    }
+  }
+
+.card-info .lose-upto .lose{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #124296 !important;
+}
+
+
+.card-info span{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0px 7px 0px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #484E5A !important;
+}
+
+.btn-group .long-btn{
+    padding: 10px 25px 10px 25px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30.93px;
+  }
+  
+  .btn-group .arrow-btn{
+    display: flex;
+    align-items: center;
+    padding: 20px !important;
+  }

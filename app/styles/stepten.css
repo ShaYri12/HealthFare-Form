@@ -1,0 +1,425 @@
+.additional-suppliments, .included-card{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 2px solid #E3E3E4;
+    border-radius: 10px;
+    gap: 20px !important;
+}
+
+.additional-suppliments span{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px
+}
+
+.additional-suppliments span button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    border: 1px solid #124296;
+    border-radius: 85px;
+    padding: 5px 20px 5px 20px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 30.93px;
+    color: #124296;
+}
+
+.additional-suppliments span h3{
+    width: 100%;
+}
+
+.additional-suppliments span h3, .included-card h3{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0.12px;
+    color: #002C20 !important;
+    text-transform: uppercase;
+}
+
+.included-card span{
+    display: flex;
+    gap: 10px;
+}
+
+.additional-suppliments{
+    display: flex;
+    flex-direction: row;
+}
+.additional-suppliments .fsdfg{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+@media screen and (max-width: 575px){
+    .additional-suppliments .fsdfg{
+        flex-direction: column;
+    }
+}
+.title-card-add{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0.12px;
+    color: #002C20 !important;
+    text-transform: uppercase;
+}
+
+.title-price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title-price .price-items{
+    color: #38B64B !important;
+}
+
+
+.available-addons-container{
+    border: 1px solid #002C20;
+    border-radius: 10px;
+}
+.available-addons-container h2{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #002C20;
+    padding: 20px;
+    letter-spacing: 0.12px;
+}
+
+
+.available-addons-card{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+    padding: 30px;
+    gap: 20px;
+}
+
+.available-addons-card p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.title-price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-price .title{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0.12px;
+    padding: 0;
+}
+
+.title-price .price{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -1px;
+    color: #38B64B !important;
+}
+
+.add-prie{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+ 
+.add-prie button{
+    width: 100%;
+    height: 51px;
+    border-radius: 85px;
+    color: white;
+    border: none;
+}
+
+.all-added-supplements{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card{
+    position: relative;
+}
+
+.card-2{
+    border: none !important;
+    padding: 0 !important;
+}
+
+.card-2-top{
+    flex-direction: column !important;
+}
+
+.plan{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.greeting{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: .12px;
+    color: #002C20;
+}
+
+.review-plan{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #484E5A;
+}
+
+.card .remove-suppliment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background-color: #B63838;
+    border-radius: 84px;
+    cursor: pointer;
+    gap:6px;
+}
+
+.remove-suppliment:hover{
+    background-color: #b63838e2 !important;
+}
+
+.note{
+    font-weight: 300 !important;
+    font-size: 15px !important;
+    line-height: 22.5px !important;
+    color: #002C20 !important;
+}
+
+@media screen and (max-width: 350px) {
+    .cart-actions{
+        flex-direction: column !important;
+    }
+    .card .remove-suppliment{
+        width: 100%;
+    }
+
+}
+
+.quantity{
+    justify-content: center;
+}
+.card .quantity-control {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .card .quantity-btn {
+    position: relative;
+    background-color: white;
+    color: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black !important;
+    max-height: 51px;
+    cursor: pointer;
+    padding: 0 15px;
+    gap: 10px;
+    flex-grow: 1;
+    flex: 1;
+  }
+
+  .card .quantity-increase{
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  .card .quantity-dicrease{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+  }
+  
+  .card .quantity-btn:hover {
+    background-color: #bbbbbb9d;
+  }
+  
+  .card .quantity-control span {
+    display: flex;
+    font-size: 16px;
+    border-top: 1px solid black !important;
+    border-bottom: 1px solid black !important;
+    padding: 10px;
+    gap: 10px;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  
+.cart-added{
+    flex-direction: column;
+}
+
+.add-suppliment{
+    cursor: pointer;
+}
+
+.additional-suppliments span{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.additional-suppliments button{
+    width: max-content;
+}
+
+@media screen and (max-width: 576px){
+    .additional-suppliments{
+        flex-direction: column;
+        width: 100%;
+    }
+    .additional-suppliments span{
+        width: max-content;
+    }
+}
+
+.additional-suppliments p, .included-card span p{
+    font-weight: 300;
+    font-style: 16px;
+    line-height: 24px;
+}
+
+.total-cost{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 2px solid #181818;
+    border-radius: 10px;
+    padding: 30px;
+    gap: 10px;
+}
+
+.total-cost .item-title{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    padding-bottom: 10px;
+}
+
+.total-cost span{
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    width: 100%;
+}
+
+.total-cost hr {
+    width: 100%;
+    border: 1px solid #002C20;
+  }
+
+.total-cost h4{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22.5px;
+}
+
+.total-cost h2{
+    padding: 0;
+}
+
+.total-cost h3{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0.12px;
+    color:#002C20 !important;
+}
+
+.total-cost h2{
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 37.5px;
+    letter-spacing: 0.12px;
+    color:#002C20 !important;
+    text-align: right !important;
+}
+
+.total-cost .total{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22.5px;
+}
+
+.total-cost .total h2 p{
+    display: flex;
+    flex-direction: column;
+    color: #002C20 !important;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22.5px;
+}
+
+.btn-group .proceed-btn{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    padding: 10px 25px 10px 25px;
+    font-size: 20px !important;
+    font-weight: 400;
+    line-height: 41.24px;
+  }
+
+  .pay-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    gap: 12.47px;
+
+  }
+
+  .addons-btn{
+    font-weight: 400 !important;
+    font-size: 15px !important;
+    line-height: 30.93px !important;
+    padding: 10px 0 !important;
+  }
+
+  .addons-btn .arrow-btn img{
+    width: 100%;
+
+  }
+
+  .add-btn, .cart-btn{
+    background-color: #124296 !important;
+  }
+
+  .add-btn:hover, .cart-btn:hover{
+    background-color: #124296df !important;
+  }
+
+  
+  .delete-btn{
+    background-color: #b63838 !important;
+  }
+
+  .delete-btn:hover{
+    background-color: #b63838e2 !important;
+  }

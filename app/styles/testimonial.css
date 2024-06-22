@@ -1,0 +1,113 @@
+.testimonialContainer {
+    margin-top: 30px;
+    background-color: #124296;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 50px 30px 50px 30px;
+    position: relative;
+    margin-bottom: 80px;
+  }
+  
+  .testimonialHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+  
+  .testimonialHeader h2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0.15px;
+    padding: 0;
+  }
+  
+  .testimonialNavigation {
+    display: flex;
+    gap: 7.5px;
+  }
+
+  .testimonialNavigation-sm{
+    display: none;
+  }
+
+  @media screen and (max-width: 576px) {
+    .testimonialNavigation{
+        display: none !important;
+    }
+
+    .testimonialNavigation-sm{
+      display: flex !important;
+      margin-top: 34px;
+    }
+  }
+  
+  .navButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 30px;
+    max-width: 30px;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 11.25px;
+    color: white;
+    border-radius: 63.75px;
+    gap: 4.5px;
+    cursor: pointer;
+  }
+
+  .navButton:hover {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  .navButton:hover img {
+    filter: invert(1) brightness(0);
+  }
+  
+  .textimonial-next{
+    transform: scaleX(-1);
+  }
+  
+  .testimonialContent {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .ratingSource {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 500;
+    gap: 30px;
+  }
+  
+  .rating {
+    display: flex;
+  }
+
+  .rating img{
+    width: 20px;
+    height: 20px;
+  }
+  
+  .testimonialText {
+    color: white !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25.6px;
+    letter-spacing: -2%;
+    padding-bottom: 20px;
+  }
+  
+  .testimonialAuthor {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16.8px;
+    letter-spacing: -2px;
+    color: white !important;
+  }
+  
