@@ -43,6 +43,24 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
         formattedValue += `-${value.slice(6, 10)}`;
       }
 
+      // Handle different fields based on their types
+    if (field === 'month' || field === 'day' || field === 'year') {
+      // Replace non-numeric characters with an empty string for month, day, year inputs
+      const numericValue = value.replace(/\D/g, '');
+      
+      // Update the form data with the sanitized numeric value
+      setFormData({
+        ...formData,
+        [field]: numericValue,
+      });
+    } else {
+      // For other fields (firstName, lastName, phone, email), update directly
+      setFormData({
+        ...formData,
+        [field]: value,
+      });
+    }
+
       // Update state with formatted value
       setFormData({
         ...formData,
@@ -130,6 +148,36 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
         newErrors.year = t('error.yearError');
         isValid = false;
       }
+
+      if (
+        formData.year <= currentYear &&
+        formData.year > 1900 &&
+        formData.month <= 12 &&
+        formData.month > 1 &&
+        formData.day < 31 &&
+        formData.day > 1
+      ) {
+        if (age !== null && age < 18) {
+          const newData = {
+            title: t("error.disqualifyTitle"),
+            desc: t("error.ageError"),
+          };
+          setAge(null);
+          setFormData({
+            ...formData,
+            month: "",
+            day: "",
+            year: "",
+          });
+          handleChange({
+            month: "",
+            day: "",
+            year: "",
+          });
+          updateNotEligibleData(newData);
+          handleNotEligible();
+        }
+      }
     } else if (currentQuestion === 1) {
       if (!formData.streetAddress.trim()) {
         newErrors.streetAddress = t('error.streetAddressError');
@@ -165,27 +213,6 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
         nextInfo();
       }
     } 
-
-    if (age !== null && age < 18) {
-      const newData = {
-        title: t('error.disqualifyTitle'),
-        desc: t('error.ageError')
-      };
-      setAge(null);
-      setFormData({
-        ...formData,
-        month: '',
-        day: '',
-        year: '',
-      });
-      handleChange({
-        month: '',
-        day: '',
-        year: '',
-      });
-      updateNotEligibleData(newData);
-      handleNotEligible();
-    }
 
     setErrors(newErrors);
     return isValid;
@@ -250,54 +277,54 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
       title: t('stepSix.question1.title'),
       form: (
         <form onSubmit={handleSubmit} className="input-form">
-          <div className="input-group">
-            <div className="input-label">
-              <label>{t('stepSix.question1.firstName')}</label>
-              <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange('firstName')} placeholder={t('stepSix.question1.firstNamePlaceholder')} />
-              {errors.firstName && <span className="error">{errors.firstName}</span>}
-            </div>
-            <div className="input-label">
-              <label>{t('stepSix.question1.lastName')}</label>
-              <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange('lastName')} placeholder={t('stepSix.question1.lastNamePlaceholder')} />
-              {errors.lastName && <span className="error">{errors.lastName}</span>}
-            </div>
+      <div className="input-group">
+        <div className="input-label">
+          <label>{t('stepSix.question1.firstName')}</label>
+          <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange('firstName')} placeholder={t('stepSix.question1.firstNamePlaceholder')} />
+          {errors.firstName && <span className="error">{errors.firstName}</span>}
+        </div>
+        <div className="input-label">
+          <label>{t('stepSix.question1.lastName')}</label>
+          <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange('lastName')} placeholder={t('stepSix.question1.lastNamePlaceholder')} />
+          {errors.lastName && <span className="error">{errors.lastName}</span>}
+        </div>
+      </div>
+      <div className="input-label">
+        <label>{t('stepSix.question1.phone')}</label>
+        <input type="text" name="phone" value={formData.phone} onChange={handleInputChange('phone')} placeholder={t('stepSix.question1.phonePlaceholder')} />
+        {errors.phone && <span className="error">{errors.phone}</span>}
+      </div>
+      <div className="input-label">
+        <label>{t('stepSix.question1.email')}</label>
+        <input type="text" name="email" value={formData.email} onChange={handleInputChange('email')} placeholder={t('stepSix.question1.emailPlaceholder')} />
+        {errors.email && <span className="error">{errors.email}</span>}
+      </div>
+      <div>
+        <label>{t('stepSix.question1.dob')}</label>
+        <div className="input-group">
+          <div className="input-label">
+            <input type="text" name="month" value={formData.month} onChange={handleInputChange('month')} placeholder="MM" maxLength="2" />
+            {errors.month && <span className="error">{errors.month}</span>}
           </div>
-            <div className="input-label">
-              <label>{t('stepSix.question1.phone')}</label>
-              <input type="text" name="phone" value={formData.phone} onChange={handleInputChange('phone')} placeholder={t('stepSix.question1.phonePlaceholder')} />
-              {errors.phone && <span className="error">{errors.phone}</span>}
-            </div>
-            <div className="input-label">
-              <label>{t('stepSix.question1.email')}</label>
-              <input type="text" name="email" value={formData.email} onChange={handleInputChange('email')} placeholder={t('stepSix.question1.emailPlaceholder')} />
-              {errors.email && <span className="error">{errors.email}</span>}
-            </div>
-            <div>
-              <label>{t('stepSix.question1.dob')}</label>
-              <div className="input-group">
-                <div className="input-label">
-                  <input type="number" name="month" value={formData.month} onChange={handleInputChange('month')} placeholder="MM" />
-                  {errors.month && <span className="error">{errors.month}</span>}
-                </div>
-                <div className="input-label">
-                  <input type="number" name="day" value={formData.day} onChange={handleInputChange('day')} placeholder="DD" />
-                  {errors.day && <span className="error">{errors.day}</span>}
-                </div>
-                <div className="input-label">
-                  <input type="number" name="year" value={formData.year} onChange={handleInputChange('year')} placeholder="YYYY"/>
-                  {errors.year && <span className="error">{errors.year}</span>}
-                </div>
-              </div>
-            </div>
-          <div className='btn-group btn-group-stepthree'>
-            <button type="button" className='back-btn back-btn-stepthree' onClick={prevInfo}>
-              <img src="/assets/arrow.svg" alt="arrow" /> {t('stepSix.back')}
-            </button>
-            <div className='forward-btns'>
-              <button type="submit" className='long-btn long-btn-stepthree'>{t('stepSix.continueJourney')}</button>
-            </div>
+          <div className="input-label">
+            <input type="text" name="day" value={formData.day} onChange={handleInputChange('day')} placeholder="DD" maxLength="2" />
+            {errors.day && <span className="error">{errors.day}</span>}
           </div>
-        </form>
+          <div className="input-label">
+            <input type="text" name="year" value={formData.year} onChange={handleInputChange('year')} placeholder="YYYY" maxLength="4" />
+            {errors.year && <span className="error">{errors.year}</span>}
+          </div>
+        </div>
+      </div>
+      <div className='btn-group btn-group-stepthree'>
+        <button type="button" className='back-btn back-btn-stepthree' onClick={prevInfo}>
+          <img src="/assets/arrow.svg" alt="arrow" /> {t('stepSix.back')}
+        </button>
+        <div className='forward-btns'>
+          <button type="submit" className='long-btn long-btn-stepthree'>{t('stepSix.continueJourney')}</button>
+        </div>
+      </div>
+    </form>
       ),
     },
     {
