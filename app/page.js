@@ -27,7 +27,7 @@ const Home = () => {
 
   // Initialize formValues with arrays where necessary
   const [formValues, setFormValues] = useState({
-    stepOne: {location: "Hawaii"},
+    stepOne: {},
     stepTwo: {},
     stepThree: {},
     stepFour: {},
