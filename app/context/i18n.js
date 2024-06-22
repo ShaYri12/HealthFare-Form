@@ -172,6 +172,7 @@ const resources = {
           phonePlaceholder: "e.g., (123) 456-7890",
           email:"Email",
           emailPlaceholder: "e.g., johndoe@example.com",
+          dob: "Date of Birth"
         },
         question2: {
           title: "What’s your address?",
@@ -534,6 +535,7 @@ const resources = {
           phonePlaceholder: "por ejemplo, (123) 456-7890",
           email: "Correo electrónico",
           emailPlaceholder: "por ejemplo, juanperez@example.com",
+          dob: "Fecha de Nacimiento"
         },
         question2: {
           title: "¿Cuál es tu dirección?",
@@ -896,6 +898,7 @@ const resources = {
           phonePlaceholder: "por exemplo, (11) 98765-4321",
           email: "Email",
           emailPlaceholder: "por exemplo, joaosilva@example.com",
+          dob: "Data de Nascimento"
         },
         question2: {
           title: "Qual é o seu endereço?",

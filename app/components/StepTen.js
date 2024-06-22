@@ -359,7 +359,6 @@ const StepTen = ({
 
           return (
             <span key={index}>
-              <h4>{item.title}</h4>
               <h4>{item.monthPlan}</h4>
               <h4>{adjustedPrice}</h4>
             </span>

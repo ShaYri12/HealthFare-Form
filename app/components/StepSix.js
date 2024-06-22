@@ -4,9 +4,8 @@ import "../styles/stepsix.css";
 import "../styles/form.css";
 import Review from "./Review";
 
-const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligibleData, handleNotEligible }) => {
+const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligibleData, handleNotEligible, currentQuestion, setCurrentQuestion }) => {
   const { t } = useTranslation();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [formData, setFormData] = useState({
     firstName: formValues.stepSix.firstName || '',
     lastName: formValues.stepSix.lastName || '',
@@ -109,6 +108,28 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
         newErrors.email = t('error.emailInvalidError');
         isValid = false;
       }
+
+      if (!formData.month.trim()) {
+        newErrors.month = t('error.fillError');
+        isValid = false;
+      } else if (formData.month < 1 || formData.month > 12) {
+        newErrors.month = t('error.monthError');
+        isValid = false;
+      }
+      if (!formData.day.trim()) {
+        newErrors.day = t('error.fillError');
+        isValid = false;
+      } else if (formData.day < 1 || formData.day > 31) {
+        newErrors.day = t('error.dateError');
+        isValid = false;
+      }
+      if (!formData.year.trim()) {
+        newErrors.year = t('error.fillError');
+        isValid = false;
+      } else if (formData.year < 1900 || formData.year >= currentYear) {
+        newErrors.year = t('error.yearError');
+        isValid = false;
+      }
     } else if (currentQuestion === 1) {
       if (!formData.streetAddress.trim()) {
         newErrors.streetAddress = t('error.streetAddressError');
@@ -136,28 +157,6 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
         isValid = false;
       }
     } else if (currentQuestion === 2) {
-      if (!formData.month.trim()) {
-        newErrors.month = t('error.fillError');
-        isValid = false;
-      } else if (formData.month < 1 || formData.month > 12) {
-        newErrors.month = t('error.monthError');
-        isValid = false;
-      }
-      if (!formData.day.trim()) {
-        newErrors.day = t('error.fillError');
-        isValid = false;
-      } else if (formData.day < 1 || formData.day > 31) {
-        newErrors.day = t('error.dateError');
-        isValid = false;
-      }
-      if (!formData.year.trim()) {
-        newErrors.year = t('error.fillError');
-        isValid = false;
-      } else if (formData.year < 1900 || formData.year >= currentYear) {
-        newErrors.year = t('error.yearError');
-        isValid = false;
-      }
-    } else if (currentQuestion === 3) {
       if (!formData.gender.trim()) {
         newErrors.gender = t('error.selectError');
         isValid = false;
@@ -273,6 +272,23 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
               <input type="text" name="email" value={formData.email} onChange={handleInputChange('email')} placeholder={t('stepSix.question1.emailPlaceholder')} />
               {errors.email && <span className="error">{errors.email}</span>}
             </div>
+            <div>
+              <label>{t('stepSix.question1.dob')}</label>
+              <div className="input-group">
+                <div className="input-label">
+                  <input type="number" name="month" value={formData.month} onChange={handleInputChange('month')} placeholder="MM" />
+                  {errors.month && <span className="error">{errors.month}</span>}
+                </div>
+                <div className="input-label">
+                  <input type="number" name="day" value={formData.day} onChange={handleInputChange('day')} placeholder="DD" />
+                  {errors.day && <span className="error">{errors.day}</span>}
+                </div>
+                <div className="input-label">
+                  <input type="number" name="year" value={formData.year} onChange={handleInputChange('year')} placeholder="YYYY"/>
+                  {errors.year && <span className="error">{errors.year}</span>}
+                </div>
+              </div>
+            </div>
           <div className='btn-group btn-group-stepthree'>
             <button type="button" className='back-btn back-btn-stepthree' onClick={prevInfo}>
               <img src="/assets/arrow.svg" alt="arrow" /> {t('stepSix.back')}
@@ -314,35 +330,6 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
               ))}
             </select>
             {errors.state && <span className="error">{errors.state}</span>}
-          </div>
-          <div className='btn-group btn-group-stepthree'>
-            <button type="button" className='back-btn back-btn-stepthree' onClick={prevInfo}>
-              <img src="/assets/arrow.svg" alt="arrow" /> {t('stepSix.back')}
-            </button>
-            <div className='forward-btns'>
-              <button type="submit" className='long-btn long-btn-stepthree'>{t('stepSix.continueJourney')}</button>
-            </div>
-          </div>
-        </form>
-      ),
-    },
-    {
-      title: t('stepSix.question3.title'),
-      form: (
-        <form onSubmit={handleSubmit} className="input-form">
-          <div className="input-group">
-            <div className="input-label">
-              <input type="number" name="month" value={formData.month} onChange={handleInputChange('month')} placeholder="MM" />
-              {errors.month && <span className="error">{errors.month}</span>}
-            </div>
-            <div className="input-label">
-              <input type="number" name="day" value={formData.day} onChange={handleInputChange('day')} placeholder="DD" />
-              {errors.day && <span className="error">{errors.day}</span>}
-            </div>
-            <div className="input-label">
-              <input type="number" name="year" value={formData.year} onChange={handleInputChange('year')} placeholder="YYYY"/>
-              {errors.year && <span className="error">{errors.year}</span>}
-            </div>
           </div>
           <div className='btn-group btn-group-stepthree'>
             <button type="button" className='back-btn back-btn-stepthree' onClick={prevInfo}>
