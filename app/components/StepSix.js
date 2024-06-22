@@ -362,21 +362,21 @@ const StepSix = ({ nextStep, prevStep, handleChange, formValues, updateNotEligib
           <div className="gender-select">
             <div className="gender-option" onClick={() => {
               setFormData({ ...formData, gender: 'male' });
-              validateForm(); // Call validateForm to trigger the next step
+              nextStep()
             }}>
               <input type="radio" id="male" name="gender" value="male" checked={formData.gender === 'male'} />
               <label htmlFor="male"> {t('stepSix.question4.male')} </label>
             </div>
             <div className="gender-option" onClick={() => {
               setFormData({ ...formData, gender: 'female' });
-              validateForm(); // Call validateForm to trigger the next step
+              nextStep()
             }}>
               <input type="radio" id="female" name="gender" value="female" checked={formData.gender === 'female'} />
               <label htmlFor="female"> {t('stepSix.question4.female')} </label>
             </div>
             <div className="gender-option" onClick={() => {
               setFormData({ ...formData, gender: 'prefer-not-to-say' });
-              validateForm(); // Call validateForm to trigger the next step
+              nextStep()
             }}>
               <input type="radio" id="prefer-not-to-say" name="gender" value="prefer-not-to-say" checked={formData.gender === 'prefer-not-to-say'} />
               <label htmlFor="prefer-not-to-say"> {t('stepSix.question4.preferNotToSay')} </label>

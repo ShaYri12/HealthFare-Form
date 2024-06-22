@@ -67,7 +67,13 @@ const StepTen = ({
     cart2.forEach((item) => {
       const itemPrice = parseFloat(item.price.replace(/[$,]/g, ""));
       const itemQuantity = item.quantity || 1; // Default to 1 if quantity is not provided or falsy
-      total += itemPrice * itemQuantity;
+
+      // Check monthPlan and adjust price calculation accordingly
+      if (item.monthPlan.toLowerCase() === "Monthly Plan") {
+        total += itemPrice * itemQuantity; // Monthly price
+      } else if (item.monthPlan.toLowerCase() === "Three Month Plan") {
+        total += itemPrice * itemQuantity * 3; // Three months price
+      }
     });
 
     // Calculate total from cart (additional supplements)
@@ -97,7 +103,7 @@ const StepTen = ({
   // Function to handle adding an addon to the addoncart
   const handleAddAddon = (addon) => {
     const index = addoncart.findIndex((a) => a.id === addon.id);
-  
+
     if (index !== -1) {
       // Addon already in addoncart, remove it
       const newAddonCart = [...addoncart];
@@ -139,7 +145,9 @@ const StepTen = ({
       <div className="title-info">
         <h2>{t("stepTen.title")}</h2>
         <div className="plan">
-          <h3 className="greeting">{t("stepTen.greeting")} {formValues.stepSix.lastName},</h3>
+          <h3 className="greeting">
+            {t("stepTen.greeting")} {formValues.stepSix.lastName},
+          </h3>
           <p className="review-plan">{t("stepTen.planDesc")}</p>
         </div>
       </div>
@@ -192,10 +200,10 @@ const StepTen = ({
             <h3>{t("stepTen.additionalSupplements")}</h3>
             <p>{t("stepTen.noSupplementsSelected")}</p>
           </span>
-            <button className="add-suppliment" onClick={addSuppliment}>
-              {t("stepTen.addSupplements")}{" "}
-              <img src="/assets/arrowblue.svg" alt="" />
-            </button>
+          <button className="add-suppliment" onClick={addSuppliment}>
+            {t("stepTen.addSupplements")}{" "}
+            <img src="/assets/arrowblue.svg" alt="" />
+          </button>
         </div>
       ) : (
         <div className="additional-suppliments cart-added">
@@ -231,164 +239,164 @@ const StepTen = ({
                   <div className="quantity-control">
                     <button
                       className="quantity-btn quantity-increase"
-                      onClick={() => decreaseQuantity(index)}
+                      onClick={() => decreaseQuantity(index)}>
+                        -
+                      </button>
+                      <span>{quantities[index]}</span>
+                      <button
+                        className="quantity-btn quantity-dicrease"
+                        onClick={() => increaseQuantity(index)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <span
+                      className="remove-suppliment"
+                      onClick={() => removeSupplement(index)}
                     >
-                      -
-                    </button>
-                    <span>{quantities[index]}</span>
+                      <img src="/assets/delete.svg" alt="" />
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+  
+        {/* Available Addons */}
+        <div className="available-addons-container">
+          <h2>{t("stepTen.availableAddon")}</h2>
+          {availableAddons.map((addon, index) => {
+            const isInCart = addoncart.some((item) => item.id === addon.id);
+  
+            return (
+              <div className="available-addons-card" key={index}>
+                <img width={"102px"} src={addon.imgSrc} alt={addon.title} />
+                <div className="title-price">
+                  <h2 className="title">{addon.title}</h2>
+                  <p className="price" style={{ color: "#38B64B" }}>
+                    {addon.price}
+                  </p>
+                </div>
+                <p>{addon.description}</p>
+                <div className="btn-group addons-btn">
+                  <div className="forward-btns">
                     <button
-                      className="quantity-btn quantity-dicrease"
-                      onClick={() => increaseQuantity(index)}
+                      type="button"
+                      className={`long-btn ${isInCart ? 'delete-btn' : "add-btn" }`}
+                      onClick={() => handleAddAddon(addon)}
                     >
-                      +
+                      {isInCart ? t("stepTen.inCart") : t("stepTen.add")}
+                    </button>
+                    <button
+                      className={`arrow-btn ${isInCart ? 'delete-btn' : "cart-btn" }`}
+                      onClick={() => handleAddAddon(addon)}
+                    >
+                      <img src={`/assets/${isInCart ? 'delete' : "cart"}.svg`} alt="" />
                     </button>
                   </div>
-                  <span
-                    className="remove-suppliment"
-                    onClick={() => removeSupplement(index)}
-                  >
-                    <img src="/assets/delete.svg" alt="" />
-                  </span>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
-      )}
-
-      {/* Available Addons */}
-      <div className="available-addons-container">
-      <h2>{t("stepTen.availableAddon")}</h2>
-      {availableAddons.map((addon, index) => {
-        const isInCart = addoncart.some((item) => item.id === addon.id);
-
-        return (
-          <div className="available-addons-card" key={index}>
-            <img width={"102px"} src={addon.imgSrc} alt={addon.title} />
-            <div className="title-price">
-              <h2 className="title">{addon.title}</h2>
-              <p className="price" style={{ color: "#38B64B" }}>
-                {addon.price}
-              </p>
-            </div>
-            <p>{addon.description}</p>
-            <div className="btn-group addons-btn">
-              <div className="forward-btns">
-                <button
-                  type="button"
-                  className={`long-btn ${isInCart ? 'delete-btn' : "add-btn" }`}
-                  onClick={() => handleAddAddon(addon)}
-                >
-                  {isInCart ? t("stepTen.inCart") : t("stepTen.add")}
-                </button>
-                  <button
-                    className={`arrow-btn ${isInCart ? 'delete-btn' : "cart-btn" }`}
-                    onClick={() => handleAddAddon(addon)}
-                  >
-                    <img src={`/assets/${isInCart ? 'delete' : "cart"}.svg`} alt="" />
-                  </button>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-      </div>
-
-
-      <div className="included-card">
-        <h3>{t("stepTen.whatsIncluded")}</h3>
-        <span>
-          <img src="/assets/checkmark.svg" alt="checkmark" />
-          <p>{t("stepTen.providerEvaluation")}</p>
-        </span>
-        <span>
-          <img src="/assets/checkmark.svg" alt="checkmark" />
-          <p>{t("stepTen.medicationAdjustments")}</p>
-        </span>
-        <span>
-          <img src="/assets/checkmark.svg" alt="checkmark" />
-          <p>{t("stepTen.onGoingCheckIns")}</p>
-        </span>
-        <span>
-          <img src="/assets/checkmark.svg" alt="checkmark" />
-          <p>{t("stepTen.nutritionPlan")}</p>
-        </span>
-        <span>
-          <img src="/assets/checkmark.svg" alt="checkmark" />
-          <p>{t("stepTen.syringes")}</p>
-        </span>
-        <span>
-          <img src="/assets/checkmark.svg" alt="checkmark" />
-          <p>{t("stepTen.shipping")}</p>
-        </span>
-      </div>
-
-      <div className="total-cost">
-        <h3 className="item-title">{itemTitle} </h3>
-
-        {/* Display cart2 items */}
-        {cart2.map((item, index) => (
-          <span key={index}>
-            <h4>{item.monthPlan}</h4>
-            <h4>{item.price}</h4>
-          </span>
-        ))}
-
-        {/* Display cart items */}
-        {cart.map((item, index) => (
-          <span key={index}>
-            <h4>{item.title} x {item.quantity}</h4>
-            <h4>{item.price}</h4>
-          </span>
-        ))}
-
-        {/* Display addoncart items */}
-        {addoncart.length > 0 && (
+  
+        <div className="included-card">
+          <h3>{t("stepTen.whatsIncluded")}</h3>
           <span>
-            <h4>ZOFRAN x {addoncart.length}</h4>
-            <h4>
-              {addoncart.reduce(
-                (acc, addon) =>
-                  acc + parseFloat(addon.price.replace(/[$,]/g, "")),
-                0
-              )}
-            </h4>
+            <img src="/assets/checkmark.svg" alt="checkmark" />
+            <p>{t("stepTen.providerEvaluation")}</p>
           </span>
-        )}
-
-        <hr />
-        <span className="total">
-          <h3>{t("stepTen.totalCost")}</h3>
-          <h2>
-            {calculateTotalCost()} <p>{t("stepTen.dueToday")}</p>
-          </h2>
-        </span>
-      </div>
-
-      <div className="btn-group btn-group-stepthree">
-        <button className="back-btn back-btn-stepthree" onClick={prevStep}>
-          <img src="/assets/arrow.svg" alt="arrow" /> {t("stepTen.back")}
-        </button>
-        <div className="forward-btns">
-          <button className="long-btn long-btn-stepthree" onClick={nextStep}>
-            <img src="/assets/secure.svg" alt="" />{" "}
-            {t("stepTen.proceedToPayment")}{" "}
-          </button>
+          <span>
+            <img src="/assets/checkmark.svg" alt="checkmark" />
+            <p>{t("stepTen.medicationAdjustments")}</p>
+          </span>
+          <span>
+            <img src="/assets/checkmark.svg" alt="checkmark" />
+            <p>{t("stepTen.onGoingCheckIns")}</p>
+          </span>
+          <span>
+            <img src="/assets/checkmark.svg" alt="checkmark" />
+            <p>{t("stepTen.nutritionPlan")}</p>
+          </span>
+          <span>
+            <img src="/assets/checkmark.svg" alt="checkmark" />
+            <p>{t("stepTen.syringes")}</p>
+          </span>
+          <span>
+            <img src="/assets/checkmark.svg" alt="checkmark" />
+            <p>{t("stepTen.shipping")}</p>
+          </span>
         </div>
+  
+        <div className="total-cost">
+          <h3 className="item-title">{itemTitle} </h3>
+  
+          {/* Display cart2 items */}
+          {cart2.map((item, index) => (
+            <span key={index}>
+              <h4>{item.title}</h4>
+              <h4>{item.monthPlan}</h4>
+              <h4>{item.price}</h4>
+            </span>
+          ))}
+  
+          {/* Display cart items */}
+          {cart.map((item, index) => (
+            <span key={index}>
+              <h4>{item.title} x {item.quantity}</h4>
+              <h4>{item.price}</h4>
+            </span>
+          ))}
+  
+          {/* Display addoncart items */}
+          {addoncart.length > 0 && (
+            <span>
+              <h4>ZOFRAN x {addoncart.length}</h4>
+              <h4>
+                {addoncart.reduce(
+                  (acc, addon) =>
+                    acc + parseFloat(addon.price.replace(/[$,]/g, "")),
+                  0
+                )}
+              </h4>
+            </span>
+          )}
+  
+          <hr />
+          <span className="total">
+            <h3>{t("stepTen.totalCost")}</h3>
+            <h2>
+              {calculateTotalCost()} <p>{t("stepTen.dueToday")}</p>
+            </h2>
+          </span>
+        </div>
+  
+        <div className="btn-group btn-group-stepthree">
+          <button className="back-btn back-btn-stepthree" onClick={prevStep}>
+            <img src="/assets/arrow.svg" alt="arrow" /> {t("stepTen.back")}
+          </button>
+          <div className="forward-btns">
+            <button className="long-btn long-btn-stepthree" onClick={nextStep}>
+              <img src="/assets/secure.svg" alt="" />{" "}
+              {t("stepTen.proceedToPayment")}{" "}
+            </button>
+          </div>
+        </div>
+  
+        <div className="pay-img">
+          <img src="/assets/pay1.svg" alt="" />
+          <img src="/assets/pay2.svg" alt="" />
+          <img src="/assets/pay3.svg" alt="" />
+          <img src="/assets/pay4.svg" alt="" />
+          <img src="/assets/pay5.svg" alt="" />
+          <img src="/assets/pay6.svg" alt="" />
+        </div>
+  
+        <Review />
       </div>
-
-      <div className="pay-img">
-        <img src="/assets/pay1.svg" alt="" />
-        <img src="/assets/pay2.svg" alt="" />
-        <img src="/assets/pay3.svg" alt="" />
-        <img src="/assets/pay4.svg" alt="" />
-        <img src="/assets/pay5.svg" alt="" />
-        <img src="/assets/pay6.svg" alt="" />
-      </div>
-
-      <Review />
-    </div>
-  );
-};
-
-export default StepTen;
+    );
+  };
+  
+  export default StepTen;
+  
